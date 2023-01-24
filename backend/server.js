@@ -1,8 +1,12 @@
 const express = require('express');
 const dotenv = require('dotenv').config();
+const colors = require('colors');
 const app = express();
 const { errorHandler } = require('./middleware/errorMiddleware');
+const connectDB = require('./config/db');
 
+//connect database
+connectDB();
 // setup middleware
 
 app.use(express.json());
