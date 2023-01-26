@@ -8,10 +8,15 @@ const {
   deleteGoals,
 } = require('../controller/goalController');
 
+const protect = require('../middleware/authMiddleware');
 // setup the CRUD routes
 
-router.route('/').get(getGoals).post(setGoals);
+router.route('/').get(protect, getGoals).post(protect, setGoals);
 
-router.route('/:id').get(getGoal).put(updateGoals).delete(deleteGoals);
+router
+  .route('/:id')
+  .get(protect, getGoal)
+  .put(protect, updateGoals)
+  .delete(protect, deleteGoals);
 
 module.exports = router;

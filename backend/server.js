@@ -14,6 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // use the routes folder for API
 app.use('/api/goals', require('./routes/goalRoutes'));
+app.use('/api/users', require('./routes/userRoutes'));
 app.use(errorHandler); // placement of this is important. Should be after using routes
 
 const port = process.env.PORT || 5000;
